@@ -1,5 +1,6 @@
 import './globals.css';
 import { fontVariablesClassName } from '@/lib/fonts';
+import { SessionProvider } from 'next-auth/react';
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -13,7 +14,9 @@ export default function RootLayout(props: {
   return (
     <html lang="ja">
       <body className={fontVariablesClassName}>
-        {props.children}
+        <SessionProvider>
+          {props.children}
+        </SessionProvider>
       </body>
     </html>
   )
